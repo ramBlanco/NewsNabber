@@ -1,0 +1,8 @@
+scrapy==2.6.2
+typing
+requests
+beautifulsoup4
+html5lib
+python-dateutil
+pyOpenSSL==22.0.0
+cryptography==38.0.4

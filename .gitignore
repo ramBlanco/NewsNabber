@@ -1,0 +1,5 @@
+.venv
+pages
+.vscode
+__pycache__
+src/data
