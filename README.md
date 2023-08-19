@@ -1,4 +1,4 @@
-# Project Name
+# NewsMabber
 
 This project is developed in Python and focuses on get articles using a crawler.
 
