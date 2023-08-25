@@ -96,7 +96,7 @@ class ArticleSpider(CrawlSpider):
         publication_date = self.get_date(response)
         title = self.get_title(response)
         article = ArticleItem(
-            description=description, date=publication_date, title=title
+            description=description, date=publication_date, title=title, category=self.save_pages_in_dir
         )
 
         return article

@@ -4,12 +4,11 @@ from scrapy.crawler import CrawlerProcess
 from tp_crawler.spiders.notes import NotesSpider
 from tp_crawler.spiders.article import ArticleSpider
 import multiprocessing
-from utils.util import check_is_dir_exists
+from utils.util import check_is_dir_exists, get_total_pages
 from scrapy.utils.project import get_project_settings
-from configs.config_const import DIR_SAVE_PAGE
+from configs.config_const import DIR_SAVE_PAGE, CATEGORIES
 import json
 
-CATEGORIES = ["economia"]
 
 settings = get_project_settings()
 
@@ -67,10 +66,11 @@ def handler(page_number, category):
 
 for category in CATEGORIES:
     check_is_dir_exists(f"{DIR_SAVE_PAGE}/{category}")
-    for page_number in range(1, 3):
+    for page_number in get_total_pages():
         process = multiprocessing.Process(
             target=handler,
             args=(page_number, category),
         )
         process.start()
         process.join()
+

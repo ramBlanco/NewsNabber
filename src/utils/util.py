@@ -1,4 +1,5 @@
 import os
+from configs.config_const import TOTAL_PAGES_TO_PROCESS, STEP_PAGES
 
 
 def check_is_dir_exists(dir):
@@ -11,3 +12,6 @@ def check_is_dir_exists(dir):
             print(f"No se pudo crear el directorio '{dir}': {error}")
     else:
         print(f"El directorio '{dir}' ya existe.")
+
+def get_total_pages() -> list:
+    return range(1, TOTAL_PAGES_TO_PROCESS, STEP_PAGES)
