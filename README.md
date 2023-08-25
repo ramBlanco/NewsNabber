@@ -18,18 +18,18 @@ We recommend creating and activating a virtual environment before installing the
 2. Create a virtual environment (you can use `venv`):
 
    ```bash
-   python -m venv venv
+   python -m venv .venv
    ```
 
 1. Activate the virtual environment:
     - On windows:
     ```bash
-    venv\Scripts\activate
+    .venv\Scripts\activate
     ```
 
     - On macOS and Linux:
     ```bash
-    source venv/bin/activate
+    source .venv/bin/activate
     ```
     
 2. Now that you're in the virtual environment, install the dependencies:
