@@ -8,3 +8,4 @@ pyOpenSSL==22.0.0
 cryptography==38.0.4
 pandas
 numpy
+h2o

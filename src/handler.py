@@ -6,7 +6,7 @@ from tp_crawler.spiders.article import ArticleSpider
 import multiprocessing
 from utils.util import check_is_dir_exists, get_total_pages
 from scrapy.utils.project import get_project_settings
-from configs.config_const import DIR_SAVE_PAGE, CATEGORIES
+from configs.config_const import DIR_SAVE_PAGE, CATEGORIES, LAST_PAGE_FILE
 import json
 
 
@@ -64,9 +64,18 @@ def handler(page_number, category):
     reactor.run()
 
 
+def get_last_page(category: str) -> int:
+    try:
+        file = open(f'{LAST_PAGE_FILE}-{category}.json')
+        last_page = json.load(file)
+        return last_page['page']
+    except:
+        return 0
+
 for category in CATEGORIES:
     check_is_dir_exists(f"{DIR_SAVE_PAGE}/{category}")
-    for page_number in get_total_pages():
+    last_page = get_last_page(category)
+    for page_number in get_total_pages(last_page):
         process = multiprocessing.Process(
             target=handler,
             args=(page_number, category),

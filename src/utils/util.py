@@ -13,5 +13,5 @@ def check_is_dir_exists(dir):
     else:
         print(f"El directorio '{dir}' ya existe.")
 
-def get_total_pages() -> list:
-    return range(1, TOTAL_PAGES_TO_PROCESS, STEP_PAGES)
+def get_total_pages(last_page: int) -> list:
+    return range(last_page + 1, TOTAL_PAGES_TO_PROCESS, STEP_PAGES)

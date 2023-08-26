@@ -1,5 +1,6 @@
 .venv
-pages
+src/pages/*
 .vscode
 __pycache__
-src/data
+src/data/*
+src/history/*
