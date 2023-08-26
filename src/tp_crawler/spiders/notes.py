@@ -1,7 +1,7 @@
 import scrapy
 import json
 from configs.elements_dom import ARTICLE_ITEM
-from configs.config_const import DIR_SAVE_PAGE
+from configs.config_const import DIR_SAVE_PAGE, LAST_PAGE_FILE
 from pathlib import Path
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
@@ -64,6 +64,21 @@ class NotesSpider(CrawlSpider):
         Path(DIR_SAVE_PAGE, self.save_pages_in_dir, f"{name_page}.html").write_bytes(
             response.body
         )
+
+        self.save_number_page()
+
+    def save_number_page(self):
+        try:
+
+            dict_page = {"page": self.page_number}
+            jsonString = json.dumps(dict_page)
+
+            file = open(Path(f'{LAST_PAGE_FILE}-{self.save_pages_in_dir}.json'),"w")
+            file.write(jsonString)
+            file.close()
+        except Exception as e:
+            print("No se pudo actualizar el numero de pagina")
+            print(e)
 
     def save_urls_articles(self, name_page: str, url_articles: list):
         jsonString = json.dumps(url_articles)
