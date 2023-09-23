@@ -10,3 +10,4 @@ pandas
 numpy
 h2o
 featuretools
+scikit-learn
